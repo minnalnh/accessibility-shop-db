@@ -1,0 +1,46 @@
+[
+  {
+    "id": 21,
+    "name": "Ivory Black",
+    "size": "37ml",
+    "material": "Oil",
+    "description": "High-quality ivory black oil paint for professional artists.",
+    "brand": "Masterpiece Oils",
+    "price": 169,
+    "image": "json-images/ivory-black.png",
+    "alt": "Ivory Black"
+  },
+  {
+    "id": 22,
+    "name": "Cadmium Yellow",
+    "size": "45ml",
+    "material": "Oil",
+    "description": "Vibrant cadmium yellow with a classic oil consistency.",
+    "brand": "Heritage Colors",
+    "price": 199,
+    "image": "json-images/cadmium-yellow.png",
+    "alt": "Cadmium Yellow"
+  },
+  {
+    "id": 23,
+    "name": "Alizarin Crimson",
+    "size": "60ml",
+    "material": "Oil",
+    "description": "Rich alizarin crimson with a thick impasto texture for expressive strokes.",
+    "brand": "Palette Knives Studios",
+    "price": 249,
+    "image": "json-images/alizarin-crimson.png",
+    "alt": "Alizarin Crimson"
+  },
+  {
+    "id": 24,
+    "name": "Raw Umber",
+    "size": "40ml",
+    "material": "Oil",
+    "description": "Quick-drying raw umber oil paint for efficient painting sessions.",
+    "brand": "Rapid Dry Colors",
+    "price": 189,
+    "image": "json-images/raw-umber.png",
+    "alt": "Raw Umber"
+  }
+]

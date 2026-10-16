@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Soft Fan Brush",
+    "size": "Medium",
+    "material": "Synthetic",
+    "description": "Ideal for blending and softening edges.",
+    "brand": "Artisan Brushes",
+    "price": 129,
+    "image": "json-images/soft-fan-brush.png",
+    "alt": "Soft Fan Brush"
+  },
+  {
+    "id": 2,
+    "name": "Bristle Fan Brush",
+    "size": "Large",
+    "material": "Natural Bristles",
+    "description": "Great for creating texture and foliage in landscapes.",
+    "brand": "Masterpiece Brushes",
+    "price": 189,
+    "image": "json-images/bristle-fan-brush.png",
+    "alt": "Bristle Fan Brush"
+  },
+  {
+    "id": 3,
+    "name": "Fine Detail Fan Brush",
+    "size": "Small",
+    "material": "Synthetic",
+    "description": "Perfect for intricate details and highlights.",
+    "brand": "Precision Art Supplies",
+    "price": 99,
+    "image": "json-images/fine-detail-fan-brush.png",
+    "alt": "Fine Detail Fan Brush"
+  },
+  {
+    "id": 4,
+    "name": "Angled Fan Brush",
+    "size": "Medium",
+    "material": "Synthetic",
+    "description": "Angled shape for versatile strokes and shading.",
+    "brand": "Creative Expressions",
+    "price": 149,
+    "image": "json-images/angled-fan-brush.png",
+    "alt": "Angled Fan Brush"
+  }
+]

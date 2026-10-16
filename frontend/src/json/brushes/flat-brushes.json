@@ -1,0 +1,46 @@
+[
+  {
+    "id": 11,
+    "name": "Square Flat Brush",
+    "size": "Medium",
+    "material": "Synthetic",
+    "description": "Versatile flat brush with a square tip for precise strokes.",
+    "brand": "Artisan Brushes",
+    "price": 149,
+    "image": "json-images/square-flat-brush.png",
+    "alt": "Square Flat Brush"
+  },
+  {
+    "id": 12,
+    "name": "Wide Flat Brush",
+    "size": "Large",
+    "material": "Bristle",
+    "description": "Ideal for covering large areas and creating broad strokes.",
+    "brand": "Masterpiece Brushes",
+    "price": 179,
+    "image": "json-images/wide-flat-brush.png",
+    "alt": "Wide Flat Brush"
+  },
+  {
+    "id": 13,
+    "name": "Fine Detail Flat Brush",
+    "size": "Small",
+    "material": "Synthetic",
+    "description": "Perfect for intricate details and fine lines.",
+    "brand": "Precision Art Supplies",
+    "price": 129,
+    "image": "json-images/fine-detail-flat-brush.png",
+    "alt": "Fine Detail Flat Brush"
+  },
+  {
+    "id": 14,
+    "name": "Angled Flat Brush",
+    "size": "Medium",
+    "material": "Synthetic",
+    "description": "Angled shape for versatile strokes and shading.",
+    "brand": "Creative Expressions",
+    "price": 159,
+    "image": "json-images/angled-flat-brush.png",
+    "alt": "Angled Flat Brush"
+  }
+]
