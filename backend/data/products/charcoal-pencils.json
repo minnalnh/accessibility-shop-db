@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Professional Charcoal Pencil Set",
+    "size": "Assorted",
+    "material": "Vine Charcoal",
+    "description": "High-quality professional charcoal pencil set with assorted sizes for versatile sketching.",
+    "brand": "Artisan Charcoals",
+    "price": 159,
+    "image": "json-images/professional-charcoal-pencil-set.png",
+    "alt": "Professional Charcoal Pencil Set",
+    "productId": "4dd715",
+    "category": "charcoal-pencils",
+    "productType": "pencils"
+  },
+  {
+    "name": "Soft Charcoal Pencil",
+    "size": "Medium",
+    "material": "Compressed Charcoal",
+    "description": "Soft compressed charcoal pencil for smooth shading and expressive strokes.",
+    "brand": "Masterpiece Charcoals",
+    "price": 89,
+    "image": "json-images/soft-charcoal-pencil.png",
+    "alt": "Soft Charcoal Pencil",
+    "productId": "3ed568",
+    "category": "charcoal-pencils",
+    "productType": "pencils"
+  },
+  {
+    "name": "Hard Charcoal Pencil",
+    "size": "Small",
+    "material": "Willow Charcoal",
+    "description": "Hard willow charcoal pencil for fine lines and detailed charcoal work.",
+    "brand": "Precision Charcoal Tools",
+    "price": 109,
+    "image": "json-images/hard-charcoal-pencil.png",
+    "alt": "Hard Charcoal Pencil",
+    "productId": "a9af5d",
+    "category": "charcoal-pencils",
+    "productType": "pencils"
+  },
+  {
+    "name": "Extra-Soft Charcoal Pencil",
+    "size": "Large",
+    "material": "Compressed Charcoal",
+    "description": "Extra-soft compressed charcoal pencil for bold and expressive charcoal drawings.",
+    "brand": "Expressive Charcoals",
+    "price": 129,
+    "image": "json-images/extra-soft-charcoal-pencil.png",
+    "alt": "Extra-Soft Charcoal Pencil",
+    "productId": "f69a4c",
+    "category": "charcoal-pencils",
+    "productType": "pencils"
+  }
+]
