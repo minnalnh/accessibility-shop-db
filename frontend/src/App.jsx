@@ -23,12 +23,14 @@ import CharcoalPencilsPage from './components/pages/pencils-pages/CharcoalPencil
 
 
 import CheckoutPage from './components/pages/CheckoutPage';
+import { AuthProvider } from './components/AuthContext';
 import { CartProvider } from './components/CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <BrowserRouter>
+      <AuthProvider>
       <CartProvider>
         <div className="App">
           <header>
@@ -63,6 +65,7 @@ const App = () => {
           </footer>
         </div>
       </CartProvider>
+      </AuthProvider>
     </BrowserRouter>
   );
 };

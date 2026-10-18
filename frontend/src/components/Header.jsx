@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import Settings from './Settings';
 import ShoppingCart from './ShoppingCart';
 import MenuButton from './MenuButton';
+import Account from './Account';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -10,6 +11,7 @@ const Header = () => {
     const [isBox1Visible, setBox1Visibility] = useState(false);
     const [isBox2Visible, setBox2Visibility] = useState(false);
     const [isBox3Visible, setBox3Visibility] = useState(false);
+    const [isBox4Visible, setBox4Visibility] = useState(false);
     const shadowRef = useRef(null);
     const location = useLocation();
 
@@ -24,6 +26,7 @@ const Header = () => {
 
                 setBox2Visibility(false);
                 setBox3Visibility(false);
+                setBox4Visibility(false);
 
             } else if(isBox1Visible === true) {
                 setBox1Visibility(false);
@@ -38,6 +41,7 @@ const Header = () => {
 
                 setBox1Visibility(false);
                 setBox3Visibility(false);
+                setBox4Visibility(false);
 
             } else if(isBox2Visible === true) {
                 setBox2Visibility(false);
@@ -52,9 +56,25 @@ const Header = () => {
 
                 setBox1Visibility(false);
                 setBox2Visibility(false);
+                setBox4Visibility(false);
 
             } else if(isBox3Visible === true) {
                 setBox3Visibility(false);
+                shadowRef.current.classList.remove("shadow-box");
+            }
+
+        } else if(target.classList.contains("account-btn")) {
+
+            if(isBox4Visible === false) {
+                setBox4Visibility(true);
+                shadowRef.current.classList.add("shadow-box");
+
+                setBox1Visibility(false);
+                setBox2Visibility(false);
+                setBox3Visibility(false);
+
+            } else if(isBox4Visible === true) {
+                setBox4Visibility(false);
                 shadowRef.current.classList.remove("shadow-box");
             }
 
@@ -76,7 +96,16 @@ const Header = () => {
         } else if(target.classList.contains("close-btn") && isBox3Visible === true) {
             setBox3Visibility(false);
             shadowRef.current.classList.remove("shadow-box");
+
+        } else if(target.classList.contains("close-btn") && isBox4Visible === true) {
+            setBox4Visibility(false);
+            shadowRef.current.classList.remove("shadow-box");
         }
+    };
+
+    const closeAccountBox = () => {
+        setBox4Visibility(false);
+        shadowRef.current.classList.remove("shadow-box");
     };
 
     const customRouteName = (name) => {
@@ -169,6 +198,13 @@ const Header = () => {
                             handleCloseButtonClick={handleCloseButtonClick}
                             shadowRef={shadowRef} />
                         </div>
+                    <div>
+                        <Account
+                            isBox4Visible={isBox4Visible}
+                            toggleBoxVisibility={toggleBoxVisibility}
+                            handleCloseButtonClick={handleCloseButtonClick}
+                            closeBox={closeAccountBox} />
+                    </div>
                     <div className="shopping-btn">
                         <ShoppingCart
                             isBox2Visible={isBox2Visible}

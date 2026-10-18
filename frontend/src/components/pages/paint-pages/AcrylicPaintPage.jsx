@@ -1,6 +1,5 @@
 import React from 'react';
-import artSupplies from "../../../json/paint/acrylic-paint.json";
-import Product from '../../Product';
+import ProductList from '../../ProductList';
 
 const AcrylicPaintPage = () => {
     return (
@@ -10,12 +9,7 @@ const AcrylicPaintPage = () => {
                 <p className="sr-only">Painting brush getting dipped in paint</p>
             </div>
             <h2>Acrylic Paint</h2>
-            <div className="flex-container">
-            {artSupplies.map(artSupply => (
-                        <Product key={artSupply.id} {...artSupply} />
-                    ))
-                }
-            </div>
+            <ProductList category="acrylic-paint" />
         </div>
     );
 

@@ -6,19 +6,26 @@ const Product = ({ id, name, size, material, description, brand, price, image, a
     const [isCartMsgVisible, setCartMsgVisibility] = useState(false);
     const [latestProduct, setLatestProduct] = useState(null);
     const [counter, setCounter] = useState(0);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const product = { id, name, price, image, alt };
 
-    const handleAddToCart = () => {
-        console.log(latestProduct);
-        addToCart(product);
-        setLatestProduct(product);
-        setCounter((prevCounter) => prevCounter + 1);
+    const handleAddToCart = async () => {
+        try {
+            await addToCart(product);
+            setErrorMessage('');
+            setLatestProduct(product);
+            setCounter((prevCounter) => prevCounter + 1);
+        } catch (error) {
+            setErrorMessage(error.message);
+        }
+
         setCartMsgVisibility(true);
     }
 
     const handleCloseButtonClick = () => {
         setCartMsgVisibility(false);
+        setErrorMessage('');
         setCounter(0);
     };
 
@@ -36,9 +43,11 @@ const Product = ({ id, name, size, material, description, brand, price, image, a
                 </div>
             </section>
 
-            {isCartMsgVisible && latestProduct && (
-                <div className="cart-msg-box">
-                    <span><b>{counter}x {product.name}</b> added to cart</span>
+            {isCartMsgVisible && (latestProduct || errorMessage) && (
+                <div className="cart-msg-box" role="status">
+                    {errorMessage
+                        ? <span>{errorMessage}</span>
+                        : <span><b>{counter}x {product.name}</b> added to cart</span>}
                     <button className="msg-close-btn" onClick={handleCloseButtonClick}><img src="icons/xmark-solid.svg" alt="X Mark" className="icon close-btn"></img><span>Close Message</span></button>
                 </div>
 

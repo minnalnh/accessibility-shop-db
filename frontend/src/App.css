@@ -5,22 +5,22 @@
 }
 
 @font-face {
-  font-family: 'Yuji Syuku';
-  src: url('../public/fonts/Yuji_Syuku.ttf');
+  font-family: "Yuji Syuku";
+  src: url("/fonts/Yuji_Syuku.ttf");
   font-weight: normal;
   font-style: normal;
 }
 /*
 @font-face {
   font-family: 'Amiko-Bold';
-  src: url('../public/fonts/Amiko-Bold.tff');
+  src: url('/fonts/Amiko-Bold.ttf');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Amiko Regular';
-  src: url('../public/fonts/Amiko-Regular.tff');
+  src: url('/fonts/Amiko-Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }*/
@@ -56,7 +56,7 @@ footer {
   border-style: inset;
   text-align: center;
   padding-bottom: 1em;
-  background-color: #EEFFE8;
+  background-color: #eeffe8;
 }
 
 /* Navbar */
@@ -66,7 +66,7 @@ footer {
 
 nav {
   display: inline-block;
-  background-color: #EEFFE8;
+  background-color: #eeffe8;
   padding-bottom: 0.7em;
 }
 
@@ -83,7 +83,7 @@ header {
   padding-top: 0.5em;
   z-index: 4;
   width: 100%;
-  background-color: #D6EECD;
+  background-color: #d6eecd;
 }
 
 .flex-container {
@@ -111,7 +111,7 @@ img {
   margin-right: 1em;
   font-size: 1rem;
   color: #fff;
-  background-color: #2F261D;
+  background-color: #2f261d;
   border-color: #fff;
 }
 
@@ -127,7 +127,7 @@ img {
 .header-btn:hover {
   cursor: pointer;
   background-color: #fff;
-  color: #2F261D;
+  color: #2f261d;
 }
 
 input[type="radio"] {
@@ -149,12 +149,12 @@ input[type="radio"] {
   height: 20px;
   width: 20px;
   background-color: #fff;
-  border: 2px solid #2F261D;
+  border: 2px solid #2f261d;
   border-radius: 50%;
 }
 
 .radio-container input:checked + .custom-radio::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 50%;
@@ -162,7 +162,7 @@ input[type="radio"] {
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background-color: #2F261D;
+  background-color: #2f261d;
   border-radius: 50%;
 }
 
@@ -174,8 +174,8 @@ input[type="radio"] {
 .header-btn:active {
   text-decoration: underline;
   background-color: #fff;
-  color: #2F261D;
-  border-color: #2F261D;
+  color: #2f261d;
+  border-color: #2f261d;
 }
 
 .disable-click {
@@ -198,7 +198,6 @@ input[type="radio"] {
   background-color: #fff;
   border-radius: 7px;
   border-style: solid;
-  
 }
 
 .settings-box {
@@ -206,7 +205,7 @@ input[type="radio"] {
 }
 
 .home-page-breadcrumb {
-  color: #2F261D;
+  color: #2f261d;
   font-size: 1rem;
   background-color: #fff;
   padding-left: 0.3em;
@@ -215,7 +214,7 @@ input[type="radio"] {
 }
 
 .home-page-breadcrumb:hover {
-  background-color: #2F261D;
+  background-color: #2f261d;
   color: #fff;
 }
 
@@ -246,7 +245,7 @@ input[type="radio"] {
 .cart-btn {
   position: absolute;
   color: #fff;
-  background-color: #2F261D;
+  background-color: #2f261d;
   font-size: 1.5rem;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -286,14 +285,22 @@ input[type="radio"] {
   display: block;
 }
 
-body.change-font-size h1, body.change-font-size h2, body.change-font-size h3, body.change-font-size h4, body.change-font-size p, body.change-font-size button span, body.change-font-size nav ul li, body.change-font-size a, body.change-font-size #dropdown-basic-button {
+body.change-font-size h1,
+body.change-font-size h2,
+body.change-font-size h3,
+body.change-font-size h4,
+body.change-font-size p,
+body.change-font-size button span,
+body.change-font-size nav ul li,
+body.change-font-size a,
+body.change-font-size #dropdown-basic-button {
   font-size: 0.7rem;
 }
 
 .category {
   display: flex;
   flex: 1;
-  background-color: #2F261D;
+  background-color: #2f261d;
   padding: 0.7em 0.7em 0.7em 0.7em;
   margin-top: -1.4em;
   margin-left: 0.2em;
@@ -314,25 +321,29 @@ body.change-font-size h1, body.change-font-size h2, body.change-font-size h3, bo
   width: 50%;
 }
 
-h1, h2, h4, p, a {
-  color: #2F261D;
+h1,
+h2,
+h4,
+p,
+a {
+  color: #2f261d;
 }
 
 .logo {
-  color: #2F261D;
+  color: #2f261d;
   text-decoration: none;
   margin-left: 0.5em;
-  font-family: 'Yuji Syuku', sans-serif;
+  font-family: "Yuji Syuku", sans-serif;
   font-size: 2rem;
 }
 
 .footer h3 {
-  font-family: 'Yuji Syuku', sans-serif;
+  font-family: "Yuji Syuku", sans-serif;
   font-size: 1.7rem;
 }
 
 .footer a {
-  color: #2F261D;
+  color: #2f261d;
   font-size: 1.2rem;
 }
 
@@ -346,11 +357,11 @@ h1, h2, h4, p, a {
   padding: 0.3em;
   border-radius: 5px;
   color: #fff;
-  background-color: #2F261D;
+  background-color: #2f261d;
 }
 
 .numbertext {
-  background-color: #2F261D;
+  background-color: #2f261d;
   border-radius: 3px;
 }
 
@@ -362,7 +373,8 @@ h1, h2, h4, p, a {
   display: none;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   z-index: 0;
   position: absolute;
@@ -370,7 +382,7 @@ h1, h2, h4, p, a {
   width: 11em;
   height: 4em;
   padding: 16px;
-  color: #2F261D;
+  color: #2f261d;
   font-weight: bold;
   font-size: 1rem;
   transition: 0.6s ease;
@@ -379,7 +391,7 @@ h1, h2, h4, p, a {
   background-color: #fff;
   border-radius: 10px;
   border-style: solid;
-  border-color: #2F261D;
+  border-color: #0f0127;
   box-shadow: 4px #000;
 }
 
@@ -393,7 +405,7 @@ h1, h2, h4, p, a {
 
 .settings-btn {
   width: 50%;
-  background-color: #2F261D;
+  background-color: #0f0127;
   color: #fff;
   border-radius: 5px;
   font-size: 1rem;
@@ -407,7 +419,8 @@ h1, h2, h4, p, a {
   z-index: 5;
 }
 
-.close-btn, .reset-btn {
+.close-btn,
+.reset-btn {
   display: block;
   flex: 1;
 }
@@ -415,16 +428,19 @@ h1, h2, h4, p, a {
 button:hover {
   cursor: pointer;
   background-color: #fff;
-  color: #2F261D;
+  color: #0f0127;
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
   color: #fff;
-  background-color: #2F261D;
+  background-color: #0f0127;
   border-color: #fff;
 }
 
-.slide-1, .slide-2, .slide-3 {
+.slide-1,
+.slide-2,
+.slide-3 {
   color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
@@ -438,18 +454,19 @@ button:hover {
 }
 
 .slide-1 {
-  background-image: url('../public/images/wall-painting.jpg');
+  background-image: url("/images/wall-painting.jpg");
 }
 
 .slide-2 {
-  background-image: url('../public/images/painting-ocean.jpg');
+  background-image: url("/images/painting-ocean.jpg");
 }
 
 .slide-3 {
-  background-image: url('../public/images/painting-house.jpg');
+  background-image: url("/images/painting-house.jpg");
 }
 
-.sr-only { /* "alt-text" för bakgrundsbilder – är inte synlig men läses upp av skärmläsare */
+.sr-only {
+  /* "alt-text" för bakgrundsbilder – är inte synlig men läses upp av skärmläsare */
   position: absolute;
   width: 1px;
   height: 1px;
@@ -459,7 +476,6 @@ button:hover {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
-
 
 .tab-index-overlay {
   position: fixed;
@@ -527,7 +543,7 @@ button:hover {
 }
 
 .active {
-  color: #2F261D;
+  color: #0f0127;
   font-weight: bold;
   margin-left: -0.6em;
   padding-left: 0.5em;
@@ -544,16 +560,15 @@ button:hover {
   top: 10%;
   width: 300px;
   left: 0;
-  background-color: #FFF8F8;
+  background-color: #fff8f8;
   display: inline-block;
   border-radius: 12px;
   box-shadow: 4px 4px 6px #000;
 }
 
-
 .slideshow-caption {
   top: 5%;
-  color: #2F261D;
+  color: #0f0127;
   font-size: 1.5rem;
 }
 
@@ -614,7 +629,7 @@ body {
   padding: 8px 12px;
   bottom: 8px;
   text-align: center;
-  background-image: url('../public/images/main-2.jpg');
+  background-image: url("/images/main-2.jpg");
   max-width: 1300px;
   height: 30em;
   background-size: cover;
@@ -648,7 +663,7 @@ body.img-size img {
 .cart-flex-container {
   display: flex;
   border-style: solid;
-  border-color: #2F261D;
+  border-color: #0f0127;
   border-width: 2px;
   margin: 0.5em 0.5em 0.3em 0.3em;
 }
@@ -657,9 +672,10 @@ body.img-size img {
   flex: 1;
 }
 
-.cart-add-btn, .cart-remove-btn {
+.cart-add-btn,
+.cart-remove-btn {
   color: #fff;
-  background-color: #2F261D;
+  background-color: #0f0127;
 }
 
 .quantity {
@@ -700,7 +716,7 @@ body.img-size img {
 }
 
 .msg-close-btn {
-  background-color: #2F261D;
+  background-color: #0f0127;
   color: #fff;
   width: 10em;
 }
@@ -716,7 +732,7 @@ body.img-size img {
   width: 7em;
   color: #fff;
   font-size: 1rem;
-  background-color: #2F261D;
+  background-color: #0f0127;
   margin-bottom: 0.5em;
   border-radius: 12px;
 }
@@ -739,7 +755,7 @@ body.img-size img {
 }
 
 #dropdown-basic-button:hover {
-  background-color: #2F261D;
+  background-color: #0f0127;
   color: #fff;
 }
 
@@ -754,13 +770,13 @@ ul {
 }
 
 ul li a {
-  color: #2F261D;
+  color: #0f0127;
   text-decoration: none;
 }
 
 .menu-li a:hover {
   color: #fff;
-  background-color: #2F261D;
+  background-color: #0f0127;
 }
 
 ul li b {
@@ -773,13 +789,17 @@ ul li b {
   margin-right: 3em;
   height: 2.5em;
   color: #fff;
-  background-color: #2F261D;
+  background-color: #0f0127;
   font-size: 1rem;
 }
 
 @keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (min-width: 48rem) and (max-width: 61.25rem) {
@@ -794,19 +814,19 @@ ul li b {
 }
 
 @media (min-width: 48rem) {
-
   .flex-container {
     flex-direction: row;
   }
 
-  .menu-btn, .menu-box {
+  .menu-btn,
+  .menu-box {
     visibility: hidden;
   }
 
   #dropdown-basic-button {
     display: block;
     background-color: transparent;
-    color: #2F261D;
+    color: #0f0127;
     border-style: none;
     margin-left: 0.5em;
     margin-right: 0.5em;
@@ -830,17 +850,90 @@ ul li b {
   }
 }
 .page-title {
-    font-size: inherit;
-    font-weight: normal;
-    margin: 0;
+  font-size: inherit;
+  font-weight: normal;
+  margin: 0;
 }
 
 .footer-link {
-    background: none;
-    border: none;
-    padding: 0;
-    color: inherit;
-    font: inherit;
-    text-decoration: underline;
-    cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Account (login / register) pop-up */
+.account {
+  margin-top: 1em;
+}
+
+.account-box {
+  top: 12em;
+  width: 22em;
+}
+
+.account-title {
+  flex: 2;
+  margin-left: 0.8em;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1em;
+}
+
+.auth-form label {
+  margin-top: 0.6em;
+  font-size: 1.1rem;
+}
+
+.auth-form input {
+  padding: 0.4em;
+  font-size: 1rem;
+  border: 2px solid #0f0127;
+  border-radius: 7px;
+}
+
+.auth-submit {
+  margin-top: 1em;
+  height: 2.5em;
+  color: #fff;
+  background-color: #0f0127;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+
+.auth-switch {
+  margin-top: 0.8em;
+  color: #0f0127;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.auth-error {
+  margin-top: 0.8em;
+  font-weight: bold;
+}
+
+.auth-message {
+  margin: 0.5em 1em 0;
+}
+
+.order-confirmation {
+  padding: 0 1em;
+}
+
+.header-btn:disabled,
+.auth-submit:disabled,
+.checkout-btn:disabled,
+.cart-add-btn:disabled,
+.cart-remove-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

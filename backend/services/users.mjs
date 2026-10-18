@@ -30,7 +30,7 @@ export const addUser = async (items) => {
     };
   } catch (error) {
     console.error("ERROR createUser:", error);
-    throw createError(500, error.message);
+    throw createError(500, "Could not create user");
   }
 };
 
@@ -63,7 +63,7 @@ export const getUser = async (username, email) => {
       throw error;
     }
 
-    throw createError(500, error.message);
+    throw createError(500, "Could not fetch user");
   }
 };
 
@@ -86,6 +86,6 @@ export const getUserById = async (userId) => {
     return Item;
   } catch (error) {
     console.error("ERROR:", error);
-    throw createError(500, error.message);
+    throw createError(500, "Could not fetch user");
   }
 };
