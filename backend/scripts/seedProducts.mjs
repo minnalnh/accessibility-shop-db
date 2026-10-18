@@ -51,7 +51,7 @@ async function loadProducts() {
     const products = JSON.parse(fileContent);
 
     if (!Array.isArray(products)) {
-      throw new Error(`${category}.json måste innehålla en array.`);
+      throw new Error(`${category}.json must contain an array.`);
     }
 
     const categorizedProducts = products.map((product) => {
@@ -102,7 +102,7 @@ async function writeBatch(items) {
     pending = result.UnprocessedItems?.[tableName] ?? [];
 
     if (pending.length > 0) {
-      console.warn(`${pending.length} produkter väntar på nytt försök.`);
+      console.warn(`${pending.length} products are waiting for another try.`);
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
@@ -111,22 +111,22 @@ async function writeBatch(items) {
 async function seedProducts() {
   const products = await loadProducts();
 
-  console.log(`${products.length} produkter lästes in.`);
+  console.log(`${products.length} products are being read.`);
 
   for (let i = 0; i < products.length; i += 25) {
     await writeBatch(products.slice(i, i + 25));
 
     console.log(
-      `Sparat ${Math.min(i + 25, products.length)} av ${products.length}.`,
+      `Saved ${Math.min(i + 25, products.length)} av ${products.length}.`,
     );
   }
 
-  console.log("Alla produkter har sparats i DynamoDB.");
+  console.log("All products have been saved in DynamoDB.");
 }
 
 seedProducts()
   .catch((error) => {
-    console.error("Kunde inte lägga in produkterna:", error);
+    console.error("Could not add products:", error);
     process.exitCode = 1;
   })
   .finally(() => client.destroy());

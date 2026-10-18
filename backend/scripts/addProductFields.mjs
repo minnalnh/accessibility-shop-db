@@ -38,7 +38,7 @@ const categoryTypes = {
   "graphite-pencils": "pencils",
 };
 
-// Håller koll på ID:n så att de inte upprepas.
+// tracks ID so that it is not repeated
 const allProductIds = new Set();
 
 function generateProductId() {
@@ -56,14 +56,14 @@ function generateProductId() {
 async function addProductFields() {
   const updatedFiles = [];
 
-  // Läs in och validera alla filer innan de skrivs över.
+  // read and validate all files before they are written over
   for (const category of categories) {
     const filePath = path.join(productsDir, `${category}.json`);
     const content = await readFile(filePath, "utf8");
     const products = JSON.parse(content);
 
     if (!Array.isArray(products)) {
-      throw new Error(`${category}.json måste innehålla en array.`);
+      throw new Error(`${category}.json must contain an array.`);
     }
 
     const updatedProducts = products.map((product) => ({
@@ -76,7 +76,7 @@ async function addProductFields() {
     updatedFiles.push({ filePath, updatedProducts, category });
   }
 
-  // Skriv de uppdaterade produkterna till filerna.
+  // write the updated products to the file
   for (const { filePath, updatedProducts, category } of updatedFiles) {
     await writeFile(
       filePath,
@@ -87,12 +87,10 @@ async function addProductFields() {
     console.log(`Uppdaterade ${category}.json`);
   }
 
-  console.log(
-    `Klart! ${allProductIds.size} produkter har fått unika productId.`,
-  );
+  console.log(`Klart! ${allProductIds.size} products have gotten unique IDs.`);
 }
 
 addProductFields().catch((error) => {
-  console.error("Kunde inte uppdatera produkterna:", error);
+  console.error("Could not update products:", error);
   process.exitCode = 1;
 });

@@ -6,7 +6,7 @@ export const authenticate = () => ({
     const authHeader = handler.event.headers?.authorization;
 
     if (!authHeader?.startsWith("Bearer ")) {
-      throw createError(401, "Obehörig");
+      throw createError(401, "Unauthorized");
     }
 
     const token = authHeader.slice(7);
@@ -14,7 +14,7 @@ export const authenticate = () => ({
     try {
       handler.event.user = verifyToken(token);
     } catch (error) {
-      throw createError(401, "Ogiltig eller utgången token");
+      throw createError(401, "Invalid or expired token");
     }
   },
 });

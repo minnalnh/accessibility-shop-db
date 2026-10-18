@@ -7,6 +7,7 @@ import { sendResponse } from "../../../responses/index.mjs";
 import { updateProduct } from "../../../services/products.mjs";
 import { authenticate } from "../../../middlewares/authentication.mjs";
 
+// MAKE SURE THAT THERE ARE CHANGES IN THE REQ BODY
 export const handler = middy(async (event) => {
   const { productId } = event.pathParameters;
 
