@@ -11,6 +11,10 @@ if (!username || !email || !password) {
   );
 }
 
+if (!process.env.USERS_TABLE || !process.env.AWS_REGION) {
+  throw new Error("USERS_TABLE and AWS_REGION are required");
+}
+
 const existingUsername = await getUser(username);
 const existingEmail = await getUser(undefined, email);
 

@@ -6,7 +6,7 @@ import {
   TransactWriteCommand,
 } from "@aws-sdk/lib-dynamodb";
 
-const TABLE = "shui-table";
+const TABLE = process.env.USERS_TABLE;
 
 export const addUser = async (items) => {
   try {

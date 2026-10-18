@@ -6,6 +6,7 @@ import { productSchema } from "../../../utils/product.mjs";
 import { sendResponse } from "../../../responses/index.mjs";
 import { updateProduct } from "../../../services/products.mjs";
 import { authenticate } from "../../../middlewares/authentication.mjs";
+import { authorizeAdmin } from "../../../middlewares/authorizeAdmin.mjs";
 
 // MAKE SURE THAT THERE ARE CHANGES IN THE REQ BODY
 export const handler = middy(async (event) => {
@@ -20,5 +21,6 @@ export const handler = middy(async (event) => {
 })
   .use(httpJsonBodyParser())
   .use(authenticate())
+  .use(authorizeAdmin())
   .use(validateBody(productSchema.partial()))
   .use(errorHandler());

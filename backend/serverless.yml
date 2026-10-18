@@ -29,6 +29,8 @@ provider:
     PRODUCTS_TABLE: ${self:service}-products-${sls:stage}
     CARTS_TABLE: ${self:service}-carts-${sls:stage}
     ORDERS_TABLE: ${self:service}-orders-${sls:stage}
+    USERS_TABLE: ${self:service}-users-${sls:stage}
+    JWT_SECRET: ${file(./config.yml):jwtSecret}
 
 functions:
   ## AUTH
@@ -150,6 +152,23 @@ functions:
 
 resources:
   Resources:
+    ## USERS TABLE
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.USERS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+
     ## PRODUCTS TABLE
     ProductsTable:
       Type: AWS::DynamoDB::Table
