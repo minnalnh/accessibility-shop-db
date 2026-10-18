@@ -1,16 +1,22 @@
 import middy from "@middy/core";
-import httpJsonBodyParser from "@middy/http-json-body-parser";
-import { validateBody } from "../../../middlewares/validation.mjs";
+import { sendResponse } from "../../../responses/index.mjs";
 import { errorHandler } from "../../../middlewares/errorHandler.mjs";
+import { getProductById } from "../../../services/products.mjs";
 
 export const handler = middy(async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: "Go Serverless v4! Your function executed successfully!",
-    }),
-  };
-})
-  .use(httpJsonBodyParser())
-  .use(validateBody(productsSchema))
-  .use(errorHandler());
+  const { productId } = event.pathParameters;
+
+  const product = await getProductById(productId);
+
+  if (product) {
+    return sendResponse(200, {
+      success: true,
+      product,
+    });
+  } else {
+    return sendResponse(404, {
+      success: false,
+      product: "No product was found",
+    });
+  }
+}).use(errorHandler());

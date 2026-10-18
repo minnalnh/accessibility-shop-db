@@ -121,7 +121,7 @@ export const getProductById = async (productId) => {
   }
 };
 
-// create a 6 digit product ID
+// create a 6 character product ID
 export const createProduct = async (product) => {
   try {
     const productType = product.category && categoryTypes[product.category];
