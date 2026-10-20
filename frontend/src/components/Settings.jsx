@@ -15,6 +15,7 @@ function Settings({
   const contrastRef = useRef(null);
   const settingsRef = useRef(null);
   const settingsButtonRef = useRef(null);
+  const containerRef = useRef(null);
 
   const handleRadioChange = (event) => {
     const value = event.target.value;
@@ -26,10 +27,43 @@ function Settings({
     setIsTabDisabled(false);
   };
 
+  const getSettingsFocusables = () => {
+    const controls = containerRef.current?.querySelectorAll(
+      'button, input[type="radio"]',
+    );
+    const focusables = [];
+    let radioAdded = false;
+
+    controls?.forEach((control) => {
+      if (control.type !== "radio") {
+        focusables.push(control);
+      } else if (control.checked || (!radioAdded && !isChecked)) {
+        focusables.push(control);
+        radioAdded = true;
+      }
+    });
+
+    return focusables;
+  };
+
   const handleKeyPress = (event) => {
-    if (event.key === "Tab" && isTabDisabled) {
-      event.preventDefault();
-    }
+    if (event.key !== "Tab" || !isTabDisabled) return;
+
+    event.preventDefault();
+
+    const focusables = getSettingsFocusables();
+    if (focusables.length === 0) return;
+
+    const currentIndex = focusables.indexOf(document.activeElement);
+    const step = event.shiftKey ? -1 : 1;
+    const nextIndex =
+      currentIndex === -1
+        ? event.shiftKey
+          ? focusables.length - 1
+          : 0
+        : (currentIndex + step + focusables.length) % focusables.length;
+
+    focusables[nextIndex].focus();
   };
 
   useEffect(() => {
@@ -145,7 +179,7 @@ function Settings({
   }, [isChecked]);
 
   return (
-    <div>
+    <div ref={containerRef}>
       <span className="alert-text">
         <strong>{alertText}</strong>
       </span>
