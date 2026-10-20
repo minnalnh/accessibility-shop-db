@@ -10,6 +10,13 @@
   font-weight: normal;
   font-style: normal;
 }
+
+:root {
+  --button-color: #2a1e24;
+  --button-hover-color: #fff;
+  --header-bg-color: #f4f1e2;
+}
+
 /*
 @font-face {
   font-family: 'Amiko-Bold';
@@ -25,28 +32,8 @@
   font-style: normal;
 }*/
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 body {
-  background-color: #f4f1e2 !important; /* Behöver använda important på grund av bootstrap */
+  background-color: #fff;
 }
 
 /* Footer */
@@ -56,7 +43,7 @@ footer {
   border-style: inset;
   text-align: center;
   padding-bottom: 1em;
-  background-color: #eeffe8;
+  background-color: var(--header-bg-color);
 }
 
 /* Navbar */
@@ -66,7 +53,7 @@ footer {
 
 nav {
   display: inline-block;
-  background-color: #eeffe8;
+  background-color: var(--header-bg-color);
   padding-bottom: 0.7em;
 }
 
@@ -80,10 +67,9 @@ h2 {
 
 header {
   position: fixed;
-  padding-top: 0.5em;
   z-index: 4;
   width: 100%;
-  background-color: #d6eecd;
+  background-color: var(--header-bg-color);
 }
 
 .flex-container {
@@ -111,7 +97,7 @@ img {
   margin-right: 1em;
   font-size: 1rem;
   color: #fff;
-  background-color: #2f261d;
+  background-color: var(--button-color);
   border-color: #fff;
 }
 
@@ -126,12 +112,18 @@ img {
 
 .header-btn:hover {
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--button-hover-color);
   color: #2f261d;
 }
 
 input[type="radio"] {
-  display: none;
+  opacity: 0;
+  position: absolute;
+}
+
+.radio-container input:focus-visible + .custom-radio {
+  outline: 3px solid var(--button-hover-color);
+  outline-offset: 2px;
 }
 
 .radio-container {
@@ -149,7 +141,7 @@ input[type="radio"] {
   height: 20px;
   width: 20px;
   background-color: #fff;
-  border: 2px solid #2f261d;
+  border: 2px solid var(--button-color);
   border-radius: 50%;
 }
 
@@ -162,7 +154,7 @@ input[type="radio"] {
   transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background-color: #2f261d;
+  background-color: var(--button-color);
   border-radius: 50%;
 }
 
@@ -174,8 +166,8 @@ input[type="radio"] {
 .header-btn:active {
   text-decoration: underline;
   background-color: #fff;
-  color: #2f261d;
-  border-color: #2f261d;
+  color: var(--button-color);
+  border-color: var(--button-color);
 }
 
 .disable-click {
@@ -214,7 +206,7 @@ input[type="radio"] {
 }
 
 .home-page-breadcrumb:hover {
-  background-color: #2f261d;
+  background-color: var(--button-hover-color);
   color: #fff;
 }
 
@@ -245,7 +237,7 @@ input[type="radio"] {
 .cart-btn {
   position: absolute;
   color: #fff;
-  background-color: #2f261d;
+  background-color: var(--button-color);
   font-size: 1.5rem;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -293,14 +285,14 @@ body.change-font-size p,
 body.change-font-size button span,
 body.change-font-size nav ul li,
 body.change-font-size a,
-body.change-font-size #dropdown-basic-button {
+body.change-font-size button[id^="dropdown-"] {
   font-size: 0.7rem;
 }
 
 .category {
   display: flex;
   flex: 1;
-  background-color: #2f261d;
+  background-color: var(--button-color);
   padding: 0.7em 0.7em 0.7em 0.7em;
   margin-top: -1.4em;
   margin-left: 0.2em;
@@ -330,7 +322,7 @@ a {
 }
 
 .logo {
-  color: #2f261d;
+  color: var(--button-color);
   text-decoration: none;
   margin-left: 0.5em;
   font-family: "Yuji Syuku", sans-serif;
@@ -357,11 +349,11 @@ a {
   padding: 0.3em;
   border-radius: 5px;
   color: #fff;
-  background-color: #2f261d;
+  background-color: var(--button-color);
 }
 
 .numbertext {
-  background-color: #2f261d;
+  background-color: var(--button-color);
   border-radius: 3px;
 }
 
@@ -391,7 +383,7 @@ a {
   background-color: #fff;
   border-radius: 10px;
   border-style: solid;
-  border-color: #0f0127;
+  border-color: var(--button-color);
   box-shadow: 4px #000;
 }
 
@@ -405,7 +397,7 @@ a {
 
 .settings-btn {
   width: 50%;
-  background-color: #0f0127;
+  background-color: var(--button-color);
   color: #fff;
   border-radius: 5px;
   font-size: 1rem;
@@ -434,7 +426,7 @@ button:hover {
 .prev:hover,
 .next:hover {
   color: #fff;
-  background-color: #0f0127;
+  background-color: var(--button-hover-color);
   border-color: #fff;
 }
 
@@ -448,7 +440,9 @@ button:hover {
   text-align: center;
   max-width: 1300px;
   height: 30em;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   margin-left: auto;
   margin-right: auto;
 }
@@ -466,7 +460,6 @@ button:hover {
 }
 
 .sr-only {
-  /* "alt-text" för bakgrundsbilder – är inte synlig men läses upp av skärmläsare */
   position: absolute;
   width: 1px;
   height: 1px;
@@ -527,23 +520,8 @@ button:hover {
   animation-duration: 1.5s;
 }
 
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.dots {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .active {
-  color: #0f0127;
+  color: var(--button-color);
   font-weight: bold;
   margin-left: -0.6em;
   padding-left: 0.5em;
@@ -552,7 +530,7 @@ button:hover {
 
 .slideshow-container {
   position: relative;
-  margin-top: 7.75em;
+  margin-top: 10rem;
 }
 
 .slideshow-box {
@@ -560,7 +538,7 @@ button:hover {
   top: 10%;
   width: 300px;
   left: 0;
-  background-color: #fff8f8;
+  background-color: #fff;
   display: inline-block;
   border-radius: 12px;
   box-shadow: 4px 4px 6px #000;
@@ -663,7 +641,7 @@ body.img-size img {
 .cart-flex-container {
   display: flex;
   border-style: solid;
-  border-color: #0f0127;
+  border-color: var(--button-color);
   border-width: 2px;
   margin: 0.5em 0.5em 0.3em 0.3em;
 }
@@ -716,7 +694,7 @@ body.img-size img {
 }
 
 .msg-close-btn {
-  background-color: #0f0127;
+  background-color: var(--button-color);
   color: #fff;
   width: 10em;
 }
@@ -732,7 +710,7 @@ body.img-size img {
   width: 7em;
   color: #fff;
   font-size: 1rem;
-  background-color: #0f0127;
+  background-color: var(--button-color);
   margin-bottom: 0.5em;
   border-radius: 12px;
 }
@@ -742,21 +720,6 @@ body.img-size img {
   margin-top: 1.3em;
   font-size: 1.1rem;
   margin-left: 3em;
-}
-
-#dropdown-basic-button {
-  display: none;
-  font-size: 1.2rem;
-}
-
-.dropdown-item:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-#dropdown-basic-button:hover {
-  background-color: #0f0127;
-  color: #fff;
 }
 
 .menu-li {
@@ -776,7 +739,7 @@ ul li a {
 
 .menu-li a:hover {
   color: #fff;
-  background-color: #0f0127;
+  background-color: var(--button-hover-color);
 }
 
 ul li b {
@@ -789,7 +752,7 @@ ul li b {
   margin-right: 3em;
   height: 2.5em;
   color: #fff;
-  background-color: #0f0127;
+  background-color: var(--button-color);
   font-size: 1rem;
 }
 
@@ -821,16 +784,6 @@ ul li b {
   .menu-btn,
   .menu-box {
     visibility: hidden;
-  }
-
-  #dropdown-basic-button {
-    display: block;
-    background-color: transparent;
-    color: #0f0127;
-    border-style: none;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    margin-top: 1.3em;
   }
 
   .navbar {
@@ -894,7 +847,7 @@ ul li b {
 .auth-form input {
   padding: 0.4em;
   font-size: 1rem;
-  border: 2px solid #0f0127;
+  border: 2px solid var(--button-color);
   border-radius: 7px;
 }
 
@@ -902,7 +855,7 @@ ul li b {
   margin-top: 1em;
   height: 2.5em;
   color: #fff;
-  background-color: #0f0127;
+  background-color: var(--button-color);
   font-size: 1rem;
   border-radius: 12px;
 }

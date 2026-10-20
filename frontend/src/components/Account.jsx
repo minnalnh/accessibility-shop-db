@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from './AuthContext';
 
-const Account = ({ isBox4Visible, toggleBoxVisibility, handleCloseButtonClick, closeBox }) => {
+const Account = ({ isBoxVisible, toggleBoxVisibility, handleCloseButtonClick, closeBox }) => {
     const { user, sessionExpired, login, register, logout } = useContext(AuthContext);
     const [mode, setMode] = useState('login');
     const [username, setUsername] = useState('');
@@ -45,9 +45,9 @@ const Account = ({ isBox4Visible, toggleBoxVisibility, handleCloseButtonClick, c
 
     return (
         <div className="account">
-            <button className="header-btn account-btn" onClick={toggleBoxVisibility}><img src="icons/user-solid.svg" alt="Account" className="icon account-btn"></img><span className="account-btn"> {user ? user.username : 'Log in'}</span></button>
+            <button className="header-btn account-btn" onClick={() => toggleBoxVisibility("account")}><img src="icons/user-solid.svg" alt="Account" className="icon account-btn"></img><span className="account-btn"> {user ? user.username : 'Log in'}</span></button>
 
-            {isBox4Visible && (
+            {isBoxVisible && (
                 <div className="account-box pop-up">
                     <div className="flex-container">
                         <h3 className="account-title">{user ? 'Your account' : mode === 'register' ? 'Register' : 'Log in'}</h3>

@@ -1,0 +1,9 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-button: #2a1e24;
+  --color-button-hover: #9fb5c6;
+  --color-header-bg: #f4f1e2;
+}

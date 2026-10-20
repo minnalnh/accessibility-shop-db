@@ -1,13 +1,36 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { CartContext } from './CartContext';
 import { AuthContext } from './AuthContext';
 
-const ShoppingCart = ({ isBox2Visible, toggleBoxVisibility, handleCloseButtonClick, isCartMsgVisible }) => {
+const ShoppingCart = ({ isBoxVisible, toggleBoxVisibility, handleCloseButtonClick, isCartMsgVisible }) => {
     const { user } = useContext(AuthContext);
     const { cartItems, loading, error, addToCart, removeItem, changeQuantity, checkout } = useContext(CartContext);
     const [busy, setBusy] = useState(false);
     const [actionError, setActionError] = useState('');
     const [order, setOrder] = useState(null);
+    const cartRef = useRef(null);
+    const cartButtonRef = useRef(null);
+
+    useEffect(() => {
+        if (!isBoxVisible) return;
+
+        const handleOutsideClick = (event) => {
+            if (
+                cartRef.current &&
+                !cartRef.current.contains(event.target) &&
+                cartButtonRef.current &&
+                !cartButtonRef.current.contains(event.target)
+            ) {
+                handleCloseButtonClick();
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [isBoxVisible, handleCloseButtonClick]);
 
     const totalSum = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -97,10 +120,10 @@ const ShoppingCart = ({ isBox2Visible, toggleBoxVisibility, handleCloseButtonCli
 
     return (
         <div className="shopping-cart">
-            <button className="header-btn shopping-btn shopping-btn-layout" onClick={toggleBoxVisibility}><img src="icons/bag-shopping-solid.svg" alt="Shopping Cart" className="icon shopping-btn"></img><span className="shopping-btn"> Your Cart</span></button>
+            <button ref={cartButtonRef} className="header-btn shopping-btn shopping-btn-layout" onClick={() => toggleBoxVisibility("shopping")}><img src="icons/bag-shopping-solid.svg" alt="Shopping Cart" className="icon shopping-btn"></img><span className="shopping-btn"> Your Cart</span></button>
 
-            {isBox2Visible && (
-                <div className="shopping-box pop-up">
+            {isBoxVisible && (
+                <div ref={cartRef} className="shopping-box pop-up">
                     <div className="flex-container">
                         <h3 className="your-items">Your Items:</h3>
                         <button className="cart-close-btn close-btn close-btn-layout" onClick={handleCloseButtonClick}><img src="icons/xmark-solid.svg" alt="X Mark" className="icon close-btn"></img><span className="close-btn"> Close Cart</span></button>
