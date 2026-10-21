@@ -1,14 +1,39 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from './AuthContext';
+import { CartContext } from './CartContext';
 
 const Account = ({ isBoxVisible, toggleBoxVisibility, handleCloseButtonClick, closeBox }) => {
     const { user, sessionExpired, login, register, logout } = useContext(AuthContext);
+    const { notice } = useContext(CartContext);
     const [mode, setMode] = useState('login');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
+    const accountRef = useRef(null);
+    const accountButtonRef = useRef(null);
+
+    useEffect(() => {
+        if (!isBoxVisible) return;
+
+        const handleOutsideClick = (event) => {
+            if (
+                accountRef.current &&
+                !accountRef.current.contains(event.target) &&
+                accountButtonRef.current &&
+                !accountButtonRef.current.contains(event.target)
+            ) {
+                handleCloseButtonClick();
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [isBoxVisible, handleCloseButtonClick]);
 
     const switchMode = (newMode) => {
         setMode(newMode);
@@ -45,14 +70,18 @@ const Account = ({ isBoxVisible, toggleBoxVisibility, handleCloseButtonClick, cl
 
     return (
         <div className="account">
-            <button className="header-btn account-btn" onClick={() => toggleBoxVisibility("account")}><img src="icons/user-solid.svg" alt="Account" className="icon account-btn"></img><span className="account-btn"> {user ? user.username : 'Log in'}</span></button>
+            <button ref={accountButtonRef} className="header-btn account-btn" onClick={() => toggleBoxVisibility("account")}><img src="icons/user-solid.svg" alt="Account" className="icon account-btn"></img><span className="account-btn"> {user ? user.username : 'Log in'}</span></button>
 
             {isBoxVisible && (
-                <div className="account-box pop-up">
+                <div ref={accountRef} className="account-box pop-up">
                     <div className="flex-container">
                         <h3 className="account-title">{user ? 'Your account' : mode === 'register' ? 'Register' : 'Log in'}</h3>
                         <button className="close-btn close-btn-layout" onClick={handleCloseButtonClick}><img src="icons/xmark-solid.svg" alt="X Mark" className="icon close-btn"></img><span className="close-btn"> Close</span></button>
                     </div>
+
+                    {notice?.type === 'login' && !user && (
+                        <p role="status" className="cart-notice">{notice.message}</p>
+                    )}
 
                     {sessionExpired && !user && (
                         <p role="status" className="auth-message">Your session has expired. Please log in again.</p>

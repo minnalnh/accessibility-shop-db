@@ -41,14 +41,14 @@ const NavDropdown = ({ id, title, items }) => {
       {isOpen && (
         <ul
           id={`${id}-menu`}
-          className="absolute left-0 z-10 m-0 mt-1 min-w-48 list-none rounded-lg bg-white py-2 pl-0 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+          className="absolute left-0 z-10 m-0 mt-1 min-w-48 list-none rounded-lg bg-white px-4 py-2 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
         >
           {items.map((item) => (
             <li key={item.path}>
               <NavLink
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className="block px-5 py-2.5 text-button hover:font-bold hover:underline"
+                className="block py-2.5 text-button hover:font-bold hover:underline"
               >
                 {item.label}
               </NavLink>

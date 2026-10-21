@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Settings from "./Settings";
 import ShoppingCart from "./ShoppingCart";
 import MenuButton from "./MenuButton";
 import Account from "./Account";
 import NavDropdown from "./NavDropdown";
+import { CartContext } from "./CartContext";
 
 const categories = [
   {
@@ -48,6 +49,15 @@ const categories = [
 const Header = () => {
   const [activeBox, setActiveBox] = useState(null);
   const location = useLocation();
+  const { notice, clearNotice } = useContext(CartContext);
+
+  useEffect(() => {
+    if (notice) setActiveBox(notice.type === "login" ? "account" : "shopping");
+  }, [notice]);
+
+  useEffect(() => {
+    if (activeBox !== "shopping" && activeBox !== "account") clearNotice();
+  }, [activeBox]);
 
   const toggleBoxVisibility = (boxName) => {
     setActiveBox((currentBox) => (currentBox === boxName ? null : boxName));
@@ -70,41 +80,28 @@ const Header = () => {
 
   return (
     <>
-    {activeBox && <div className="shadow-box" />}
-    <div className="header">
-      <div className="flex-container">
-        <Link to="/" className="logo">
-          Art Supplies
-        </Link>
+      {activeBox && <div className="shadow-box" />}
+      <div className="header">
+        <div className="flex-container">
+          <Link to="/" className="logo">
+            Art Supplies
+          </Link>
 
-        <Settings
-          isBoxVisible={activeBox === "accessibility"}
-          toggleBoxVisibility={toggleBoxVisibility}
-          handleCloseButtonClick={handleCloseButtonClick}
-        />
-      </div>
-
-      <nav className="flex-container">
-        {categories.map((category) => (
-          <div key={category.id} className="hidden md:block">
-            <NavDropdown
-              id={`dropdown-${category.id}`}
-              title={category.title}
-              items={category.items}
-            />
-          </div>
-        ))}
-
-        <div className="btn-container">
-          <div>
-            <MenuButton
-              isBoxVisible={activeBox === "menu"}
+          <div className="settings-action">
+            <Settings
+              isBoxVisible={activeBox === "accessibility"}
               toggleBoxVisibility={toggleBoxVisibility}
               handleCloseButtonClick={handleCloseButtonClick}
             />
           </div>
 
-          <div>
+          <div className="top-actions">
+            <ShoppingCart
+              isBoxVisible={activeBox === "shopping"}
+              toggleBoxVisibility={toggleBoxVisibility}
+              handleCloseButtonClick={handleCloseButtonClick}
+            />
+
             <Account
               isBoxVisible={activeBox === "account"}
               toggleBoxVisibility={toggleBoxVisibility}
@@ -112,33 +109,47 @@ const Header = () => {
               closeBox={handleCloseButtonClick}
             />
           </div>
-
-          <div className="shopping-btn">
-            <ShoppingCart
-              isBoxVisible={activeBox === "shopping"}
-              toggleBoxVisibility={toggleBoxVisibility}
-              handleCloseButtonClick={handleCloseButtonClick}
-            />
-          </div>
         </div>
 
-        <div className="breadcrumb">
-          <NavLink to="/" className="home-page-breadcrumb">
-            Home Page
-          </NavLink>
-
-          {breadcrumbTrail.map((item) => (
-            <span key={item.url}>
-              <span className="breadcrumb-separator">{" / "}</span>
-
-              <NavLink to={item.url} className="breadcrumb-navlink">
-                <b>{item.name}</b>
-              </NavLink>
-            </span>
+        <nav className="flex-container">
+          {categories.map((category) => (
+            <div key={category.id} className="hidden md:block">
+              <NavDropdown
+                id={`dropdown-${category.id}`}
+                class="dropdown-button"
+                title={category.title}
+                items={category.items}
+              />
+            </div>
           ))}
-        </div>
-      </nav>
-    </div>
+
+          <div className="btn-container">
+            <div>
+              <MenuButton
+                isBoxVisible={activeBox === "menu"}
+                toggleBoxVisibility={toggleBoxVisibility}
+                handleCloseButtonClick={handleCloseButtonClick}
+              />
+            </div>
+          </div>
+
+          <div className="breadcrumb">
+            <NavLink to="/" className="home-page-breadcrumb">
+              Home Page
+            </NavLink>
+
+            {breadcrumbTrail.map((item) => (
+              <span key={item.url}>
+                <span className="breadcrumb-separator">{" / "}</span>
+
+                <NavLink to={item.url} className="breadcrumb-navlink">
+                  <b>{item.name}</b>
+                </NavLink>
+              </span>
+            ))}
+          </div>
+        </nav>
+      </div>
     </>
   );
 };

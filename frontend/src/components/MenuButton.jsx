@@ -8,7 +8,10 @@ const MenuButton = ({
 }) => {
   return (
     <div className="menu-button">
-      <button className="header-btn menu-btn" onClick={() => toggleBoxVisibility("menu")}>
+      <button
+        className="header-btn menu-btn"
+        onClick={() => toggleBoxVisibility("menu")}
+      >
         <img
           src="icons/bars-solid.svg"
           alt="Menu"

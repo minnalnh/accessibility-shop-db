@@ -143,7 +143,7 @@ function Settings({
       setIsTabDisabled(false);
 
       window.removeEventListener("keydown", handleKeyPress);
-      document.body.classList.add("hide-btn-text");
+      document.body.classList.remove("hide-btn-text");
       document.body.classList.remove("change-font-size");
 
       setAlertText("Image size has been decreased");

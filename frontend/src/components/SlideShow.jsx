@@ -37,7 +37,7 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
       slideRef.current.classList.remove("slide-2");
       slideRef.current.classList.add("slide-1");
 
-      setSrText("Woman painting on a mural wall"); // lösning för alt-text, då den är osynlig men fångas upp av skärmläsare
+      setSrText("Woman painting on a mural wall"); // solution for alt text
     } else if (slideIndex === 2) {
       slideRef.current.classList.remove("slide-1");
       slideRef.current.classList.remove("slide-3");

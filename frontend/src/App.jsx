@@ -22,6 +22,7 @@ import ColoredPencilsPage from "./components/pages/pencils-pages/ColoredPencilsP
 import CharcoalPencilsPage from "./components/pages/pencils-pages/CharcoalPencilsPage";
 
 import CheckoutPage from "./components/pages/CheckoutPage";
+import ConfirmedPage from "./components/pages/ConfirmedPage";
 import { AuthProvider } from "./components/AuthContext";
 import { CartProvider } from "./components/CartContext";
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,14 +32,16 @@ const App = () => {
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <div className="App">
+          <div className="App wrapper mx-auto flex min-h-screen max-w-[1200px] flex-col">
             <header>
               <Header />
             </header>
 
-            <main>
+            <main className="grow">
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/checkout-page" element={<CheckoutPage />} />
+                <Route path="/confirmed-page" element={<ConfirmedPage />} />
 
                 <Route path="/fan-brushes" element={<FanBrushesPage />} />
                 <Route path="/round-brushes" element={<RoundBrushesPage />} />

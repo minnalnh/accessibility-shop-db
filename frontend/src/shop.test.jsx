@@ -75,8 +75,6 @@ describe('shop connected to the API', () => {
         userEvent.click(screen.getByRole('button', { name: /add to cart/i }));
         expect(await screen.findByText('Please log in to add items to your cart')).toBeInTheDocument();
 
-        // log in through the pop-up in the header
-        userEvent.click(screen.getByRole('button', { name: /account.*log in/i }));
         await userEvent.type(await screen.findByLabelText('Email'), 'mino@example.com');
         await userEvent.type(screen.getByLabelText('Password'), 'secret-password');
         userEvent.click(screen.getByRole('button', { name: 'Log in', exact: true }));
@@ -91,11 +89,11 @@ describe('shop connected to the API', () => {
             expect.objectContaining({ method: 'POST', body: JSON.stringify({ productId: 'p1', quantity: 1 }) }),
         );
 
-        // open the cart and check out
-        userEvent.click(await screen.findByRole('button', { name: /your cart/i }));
         expect(await screen.findByText(/Total sum:/)).toHaveTextContent('129 kr');
         userEvent.click(await screen.findByRole('button', { name: /checkout/i }));
+        userEvent.click(await screen.findByRole('button', { name: /confirm order/i }));
 
-        expect(await screen.findByText('Order number: order-123')).toBeInTheDocument();
+        expect(await screen.findByRole('heading', { name: 'Order is confirmed!' })).toBeInTheDocument();
+        expect(screen.getByText('Total: 129 kr')).toBeInTheDocument();
     });
 });

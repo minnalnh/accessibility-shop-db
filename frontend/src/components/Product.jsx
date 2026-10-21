@@ -1,33 +1,21 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
+import { AuthContext } from './AuthContext';
 
 const Product = ({ id, name, size, material, description, brand, price, image, alt }) => {
-    const { addToCart } = useContext(CartContext);
-    const [isCartMsgVisible, setCartMsgVisibility] = useState(false);
-    const [latestProduct, setLatestProduct] = useState(null);
-    const [counter, setCounter] = useState(0);
-    const [errorMessage, setErrorMessage] = useState('');
+    const { user } = useContext(AuthContext);
+    const { addToCart, notifyAdded, notifyError } = useContext(CartContext);
 
     const product = { id, name, price, image, alt };
 
     const handleAddToCart = async () => {
         try {
             await addToCart(product);
-            setErrorMessage('');
-            setLatestProduct(product);
-            setCounter((prevCounter) => prevCounter + 1);
+            notifyAdded(product);
         } catch (error) {
-            setErrorMessage(error.message);
+            notifyError(error.message, user ? 'error' : 'login');
         }
-
-        setCartMsgVisibility(true);
     }
-
-    const handleCloseButtonClick = () => {
-        setCartMsgVisibility(false);
-        setErrorMessage('');
-        setCounter(0);
-    };
 
     return (
         <div className="product item">
@@ -43,15 +31,6 @@ const Product = ({ id, name, size, material, description, brand, price, image, a
                 </div>
             </section>
 
-            {isCartMsgVisible && (latestProduct || errorMessage) && (
-                <div className="cart-msg-box" role="status">
-                    {errorMessage
-                        ? <span>{errorMessage}</span>
-                        : <span><b>{counter}x {product.name}</b> added to cart</span>}
-                    <button className="msg-close-btn" onClick={handleCloseButtonClick}><img src="icons/xmark-solid.svg" alt="X Mark" className="icon close-btn"></img><span>Close Message</span></button>
-                </div>
-
-            )}
         </div>
     )
 }
