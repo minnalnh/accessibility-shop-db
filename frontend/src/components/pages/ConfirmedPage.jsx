@@ -27,31 +27,31 @@ const ConfirmedPage = () => {
       <h2 className="mb-4 text-xl font-semibold">Your order</h2>
 
       {order.items.map((item) => (
-        <div
+        <section
           key={item.productId}
           className="flex items-center justify-between gap-4 border-b py-4"
         >
-          <div>
+          <section>
             <h3 className="font-medium">{item.name}</h3>
             <p>Quantity: {item.quantity}</p>
-          </div>
+          </section>
 
           <p className="font-semibold">{item.price * item.quantity} kr</p>
-        </div>
+        </section>
       ))}
 
       <p className="mt-6 text-right text-xl font-bold">
         Total: {order.totalPrice} kr
       </p>
 
-      <div className="mt-6 text-center">
+      <section className="mt-6 text-center">
         <Link
           to="/"
-          className="inline-block rounded bg-black px-6 py-3 text-white"
+          className="continue-shopping-btn inline-block rounded bg-black px-6 py-3 text-white"
         >
           Continue shopping
         </Link>
-      </div>
+      </section>
     </section>
   );
 };

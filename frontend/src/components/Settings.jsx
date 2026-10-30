@@ -179,20 +179,20 @@ function Settings({
   }, [isChecked]);
 
   return (
-    <div ref={containerRef}>
+    <section ref={containerRef}>
       <span className="alert-text">
         <strong>{alertText}</strong>
       </span>
-      <div
+      <section
         ref={overlayRef}
         className={`${isChecked ? "disable-click" : ""}`}
-      ></div>
-      <div
+      ></section>
+      <section
         ref={contrastRef}
         className={`${isChecked ? "change-contrast" : ""}`}
-      ></div>
+      ></section>
 
-      <div className="btn-container">
+      <section className="btn-container">
         <button
           ref={settingsButtonRef}
           className="header-btn accessibility-btn accessibility"
@@ -205,11 +205,11 @@ function Settings({
           ></img>{" "}
           Accessibility Settings
         </button>
-      </div>
+      </section>
 
       {isBoxVisible && (
-        <div ref={settingsRef} className="settings-box pop-up">
-          <div className="flex-container">
+        <section ref={settingsRef} className="settings-box pop-up">
+          <section className="flex-container">
             <button className="reset-btn settings-btn" onClick={resetSettings}>
               <img
                 src="icons/rotate-left-solid.svg"
@@ -230,7 +230,7 @@ function Settings({
               ></img>{" "}
               Close Settings
             </button>
-          </div>
+          </section>
 
           <br />
           <label className="radio-container">
@@ -302,7 +302,7 @@ function Settings({
             <span className="custom-radio"></span>
           </label>
           <hr />
-          <label className="radio-container">
+          <label className="radio-container pb-7">
             <span className="radio-label">Disable keyboard navigation</span>
             <input
               type="radio"
@@ -314,9 +314,9 @@ function Settings({
             ></input>
             <span className="custom-radio"></span>
           </label>
-        </div>
+        </section>
       )}
-    </div>
+    </section>
   );
 }
 

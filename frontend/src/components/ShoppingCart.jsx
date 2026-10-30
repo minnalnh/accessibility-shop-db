@@ -96,7 +96,7 @@ const ShoppingCart = ({
 
     if (cartItems.length === 0 && order) {
       return (
-        <div role="status" className="order-confirmation">
+        <article role="status" className="order-confirmation">
           <p>
             <b>Thank you for your order!</b>
           </p>
@@ -114,7 +114,7 @@ const ShoppingCart = ({
           <button className="auth-submit" onClick={() => setOrder(null)}>
             <span>Continue shopping</span>
           </button>
-        </div>
+        </article>
       );
     }
 
@@ -124,18 +124,18 @@ const ShoppingCart = ({
 
     return (
       <>
-        <div>
+        <section>
           {cartItems.map((item) => (
-            <div key={item.id} className="cart-flex-container">
+            <section key={item.id} className="cart-flex-container">
               <img src={item.image} alt={item.alt} className="cart-img" />
-              <div className="cart-item-info">
+              <article className="cart-item-info">
                 {item.name}
                 <br />
                 Price: <b>{item.price * item.quantity} kr</b>
                 <br />
                 Quantity:
                 <br />
-                <div className="add-quantity-remove">
+                <section className="add-quantity-remove">
                   <button
                     className="cart-add-btn"
                     disabled={busy}
@@ -157,12 +157,12 @@ const ShoppingCart = ({
                     ></img>
                     <span> Remove</span>
                   </button>
-                </div>
-              </div>
-            </div>
+                </section>
+              </article>
+            </section>
           ))}
-        </div>
-        <div className="flex-container">
+        </section>
+        <article className="flex-container">
           <p className="total-sum">
             Total sum: <b>{totalSum} kr</b>
           </p>
@@ -181,13 +181,13 @@ const ShoppingCart = ({
             ></img>
             <span> Checkout</span>
           </button>
-        </div>
+        </article>
       </>
     );
   };
 
   return (
-    <div className="shopping-cart">
+    <section className="shopping-cart">
       <button
         ref={cartButtonRef}
         className="header-btn shopping-btn shopping-btn-layout"
@@ -202,8 +202,8 @@ const ShoppingCart = ({
       </button>
 
       {isBoxVisible && (
-        <div ref={cartRef} className="shopping-box pop-up">
-          <div className="flex-container">
+        <article ref={cartRef} className="shopping-box pop-up">
+          <section className="flex-container">
             <h3 className="your-items">Your Items:</h3>
             <button
               className="cart-close-btn close-btn close-btn-layout"
@@ -216,7 +216,7 @@ const ShoppingCart = ({
               ></img>
               <span className="close-btn"> Close Cart</span>
             </button>
-          </div>
+          </section>
           {notice?.type === "added" && (
             <p role="status" className="cart-notice">
               <b>
@@ -236,9 +236,9 @@ const ShoppingCart = ({
             </p>
           )}
           {renderContent()}
-        </div>
+        </article>
       )}
-    </div>
+    </section>
   );
 };
 

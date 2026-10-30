@@ -7,7 +7,7 @@ const MenuButton = ({
   handleCloseButtonClick,
 }) => {
   return (
-    <div className="menu-button">
+    <section className="menu-button">
       <button
         className="header-btn menu-btn"
         onClick={() => toggleBoxVisibility("menu")}
@@ -21,7 +21,7 @@ const MenuButton = ({
       </button>
 
       {isBoxVisible && (
-        <div className="menu-box">
+        <section className="menu-box">
           <button
             className="close-btn close-btn-layout"
             onClick={handleCloseButtonClick}
@@ -92,9 +92,9 @@ const MenuButton = ({
               </ul>
             </li>
           </ul>
-        </div>
+        </section>
       )}
-    </div>
+    </section>
   );
 };
 

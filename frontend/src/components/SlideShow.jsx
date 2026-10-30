@@ -54,12 +54,12 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
   };
 
   return (
-    <div ref={slideRef} className="slideshow-container">
-      <div className="mySlides">
+    <section ref={slideRef} className="slideshow-container">
+      <section className="mySlides">
         <p className="sr-only">{srText}</p>
-        <div className="numbertext">
+        <section className="numbertext">
           <span className="slide-number">1 / 3</span>
-        </div>
+        </section>
         <section className="slideshow-box">
           <h1 className="slideshow-caption">Paint With Class</h1>
           <p className="slideshow-text">
@@ -70,13 +70,13 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
             political expectations while also place making imbricates.
           </p>
         </section>
-      </div>
+      </section>
 
-      <div className="mySlides">
+      <section className="mySlides">
         <p className="sr-only">{srText}</p>
-        <div className="numbertext">
+        <section className="numbertext">
           <span className="slide-number">2 / 3</span>
-        </div>
+        </section>
         <section className="slideshow-box">
           <h1 className="slideshow-caption">Paint With Class</h1>
           <p className="slideshow-text">
@@ -88,13 +88,13 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
             anti-structural.
           </p>
         </section>
-      </div>
+      </section>
 
-      <div className="mySlides">
+      <section className="mySlides">
         <p className="sr-only">{srText}</p>
-        <div className="numbertext">
+        <section className="numbertext">
           <span className="slide-number">3 / 3</span>
-        </div>
+        </section>
         <section className="slideshow-box">
           <h1 className="slideshow-caption">Paint With Class</h1>
           <p className="slideshow-text">
@@ -106,7 +106,7 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
             the political.
           </p>
         </section>
-      </div>
+      </section>
 
       <button className="prev" onClick={() => plusSlides(-1)}>
         &#10094; <span ref={btnTextRef_3}>Previous Slide</span>
@@ -115,7 +115,7 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
         <span ref={btnTextRef_4}>Next Slide</span> &#10095;
       </button>
 
-      <div className="mx-auto text-center">
+      <section className="mx-auto text-center">
         {[1, 2, 3].map((n) => (
           <span
             key={n}
@@ -124,8 +124,8 @@ const SlideShow = ({ btnTextRef_3, btnTextRef_4 }) => {
             }`}
           ></span>
         ))}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 

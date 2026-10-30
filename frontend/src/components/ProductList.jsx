@@ -1,46 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import Product from './Product';
-import { getProducts } from '../api/products';
+import React, { useEffect, useState } from "react";
+import Product from "./Product";
+import { getProducts } from "../api/products";
 
 const ProductList = ({ category }) => {
-    const [products, setProducts] = useState([]);
-    const [status, setStatus] = useState('loading');
-    const [errorMessage, setErrorMessage] = useState('');
+  const [products, setProducts] = useState([]);
+  const [status, setStatus] = useState("loading");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    useEffect(() => {
-        let cancelled = false;
-        setStatus('loading');
+  useEffect(() => {
+    let cancelled = false;
+    setStatus("loading");
 
-        getProducts({ category })
-            .then((result) => {
-                if (cancelled) return;
-                setProducts(result);
-                setStatus('done');
-            })
-            .catch((error) => {
-                if (cancelled) return;
-                setErrorMessage(error.message);
-                setStatus('error');
-            });
+    getProducts({ category })
+      .then((result) => {
+        if (cancelled) return;
+        setProducts(result);
+        setStatus("done");
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        setErrorMessage(error.message);
+        setStatus("error");
+      });
 
-        return () => { cancelled = true; };
-    }, [category]);
+    return () => {
+      cancelled = true;
+    };
+  }, [category]);
 
-    if (status === 'loading') {
-        return <p role="status">Loading products...</p>;
-    }
+  if (status === "loading") {
+    return <p role="status">Loading products...</p>;
+  }
 
-    if (status === 'error') {
-        return <p role="alert">Could not load products: {errorMessage}</p>;
-    }
+  if (status === "error") {
+    return <p role="alert">Could not load products: {errorMessage}</p>;
+  }
 
-    return (
-        <div className="flex-container">
-            {products.map((product) => (
-                <Product key={product.productId} {...product} id={product.productId} />
-            ))}
-        </div>
-    );
+  return (
+    <article className="grid grid-cols-1 items-stretch md:grid-cols-2 lg:grid-cols-4">
+      {products.map((product) => (
+        <Product key={product.productId} {...product} id={product.productId} />
+      ))}
+    </article>
+  );
 };
 
 export default ProductList;

@@ -37,7 +37,7 @@ const App = () => {
               <Header />
             </header>
 
-            <main className="grow">
+            <main className="grow px-5">
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/checkout-page" element={<CheckoutPage />} />

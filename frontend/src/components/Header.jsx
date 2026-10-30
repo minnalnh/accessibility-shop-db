@@ -80,22 +80,22 @@ const Header = () => {
 
   return (
     <>
-      {activeBox && <div className="shadow-box" />}
-      <div className="header">
-        <div className="flex-container">
+      {activeBox && <section className="shadow-box" />}
+      <header className="header">
+        <section className="flex-container">
           <Link to="/" className="logo">
             Art Supplies
           </Link>
 
-          <div className="settings-action">
+          <section className="settings-action">
             <Settings
               isBoxVisible={activeBox === "accessibility"}
               toggleBoxVisibility={toggleBoxVisibility}
               handleCloseButtonClick={handleCloseButtonClick}
             />
-          </div>
+          </section>
 
-          <div className="top-actions">
+          <section className="top-actions">
             <ShoppingCart
               isBoxVisible={activeBox === "shopping"}
               toggleBoxVisibility={toggleBoxVisibility}
@@ -108,32 +108,32 @@ const Header = () => {
               handleCloseButtonClick={handleCloseButtonClick}
               closeBox={handleCloseButtonClick}
             />
-          </div>
-        </div>
+          </section>
+        </section>
 
         <nav className="flex-container">
           {categories.map((category) => (
-            <div key={category.id} className="hidden md:block">
+            <section key={category.id} className="hidden md:block">
               <NavDropdown
                 id={`dropdown-${category.id}`}
                 class="dropdown-button"
                 title={category.title}
                 items={category.items}
               />
-            </div>
+            </section>
           ))}
 
-          <div className="btn-container">
-            <div>
+          <section className="btn-container">
+            <section>
               <MenuButton
                 isBoxVisible={activeBox === "menu"}
                 toggleBoxVisibility={toggleBoxVisibility}
                 handleCloseButtonClick={handleCloseButtonClick}
               />
-            </div>
-          </div>
+            </section>
+          </section>
 
-          <div className="breadcrumb">
+          <section className="breadcrumb">
             <NavLink to="/" className="home-page-breadcrumb">
               Home Page
             </NavLink>
@@ -147,9 +147,9 @@ const Header = () => {
                 </NavLink>
               </span>
             ))}
-          </div>
+          </section>
         </nav>
-      </div>
+      </header>
     </>
   );
 };
