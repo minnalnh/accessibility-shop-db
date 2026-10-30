@@ -1,0 +1,230 @@
+org: minnalnh
+service: accessibility-shop
+
+provider:
+  name: aws
+  runtime: nodejs24.x
+  architecture: arm64
+  region: eu-north-1
+
+  iam:
+    role: ${file(./config.yml):role}
+
+  httpApi:
+    cors:
+      allowedOrigins:
+        - http://localhost:5173
+        # - s3
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+      allowedMethods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+
+  environment:
+    PRODUCTS_TABLE: ${self:service}-products-${sls:stage}
+    CARTS_TABLE: ${self:service}-carts-${sls:stage}
+    ORDERS_TABLE: ${self:service}-orders-${sls:stage}
+    USERS_TABLE: ${self:service}-users-${sls:stage}
+    JWT_SECRET: ${file(./config.yml):jwtSecret}
+
+functions:
+  ## AUTH
+  register:
+    handler: functions/auth/register/index.handler
+    events:
+      - httpApi:
+          path: /auth/register
+          method: post
+
+  login:
+    handler: functions/auth/login/index.handler
+    events:
+      - httpApi:
+          path: /auth/login
+          method: post
+
+  ## USERS
+  getUserById:
+    handler: functions/users/getUserById/index.handler
+    events:
+      - httpApi:
+          path: /users/{userId}
+          method: get
+
+  getUser:
+    handler: functions/users/getUser/index.handler
+    events:
+      - httpApi:
+          path: /users
+          method: get
+
+  ## PRODUCTS
+  getProducts:
+    handler: functions/products/getProducts/index.handler
+    events:
+      - httpApi:
+          path: /products
+          method: get
+
+  getProductById:
+    handler: functions/products/getProductById/index.handler
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: get
+
+  createProduct:
+    handler: functions/products/createProduct/index.handler
+    events:
+      - httpApi:
+          path: /products
+          method: post
+
+  updateProduct:
+    handler: functions/products/updateProduct/index.handler
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: put
+
+  deleteProduct:
+    handler: functions/products/deleteProduct/index.handler
+    events:
+      - httpApi:
+          path: /products/{productId}
+          method: delete
+
+  ## CART
+  getCart:
+    handler: functions/cart/getCart/index.handler
+    events:
+      - httpApi:
+          path: /cart
+          method: get
+
+  addToCart:
+    handler: functions/cart/addToCart/index.handler
+    events:
+      - httpApi:
+          path: /cart/items
+          method: post
+
+  updateCartItem:
+    handler: functions/cart/updateCartItem/index.handler
+    events:
+      - httpApi:
+          path: /cart/items/{productId}
+          method: patch
+
+  removeFromCart:
+    handler: functions/cart/removeFromCart/index.handler
+    events:
+      - httpApi:
+          path: /cart/items/{productId}
+          method: delete
+
+  ## ORDERS
+  createOrder:
+    handler: functions/orders/createOrder/index.handler
+    events:
+      - httpApi:
+          path: /orders
+          method: post
+
+  getUserOrders:
+    handler: functions/orders/getUserOrders/index.handler
+    events:
+      - httpApi:
+          path: /orders
+          method: get
+
+  getOrderById:
+    handler: functions/orders/getOrderById/index.handler
+    events:
+      - httpApi:
+          path: /orders/{orderId}
+          method: get
+
+resources:
+  Resources:
+    ## USERS TABLE
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.USERS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+
+    ## PRODUCTS TABLE
+    ProductsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.PRODUCTS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: productId
+            AttributeType: S
+          - AttributeName: productType
+            AttributeType: S
+          - AttributeName: category
+            AttributeType: S
+        KeySchema:
+          - AttributeName: productId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: ProductTypeIndex
+            KeySchema:
+              - AttributeName: productType
+                KeyType: HASH
+              - AttributeName: category
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+
+    ## CARTS TABLE
+    CartsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.CARTS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: productId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: productId
+            KeyType: RANGE
+
+    ## ORDERS TABLE
+    OrdersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.ORDERS_TABLE}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: orderId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: orderId
+            KeyType: RANGE
